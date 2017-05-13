@@ -180,7 +180,7 @@
 				TargetAttributes = {
 					42D50E1D1EB9EF75005E7E4A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 37HK3NBDAT;
+						DevelopmentTeam = MGRXZA9ZDS;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -405,10 +405,10 @@
 			baseConfigurationReference = 87821E57DDDBAB627E8F5867 /* Pods-NoteWork.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 37HK3NBDAT;
+				DEVELOPMENT_TEAM = MGRXZA9ZDS;
 				INFOPLIST_FILE = NoteWork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.obukte.NoteWork;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erdenbatuhan.NoteWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -419,10 +419,10 @@
 			baseConfigurationReference = D168EF0EBBAB14A8D524D0A4 /* Pods-NoteWork.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 37HK3NBDAT;
+				DEVELOPMENT_TEAM = MGRXZA9ZDS;
 				INFOPLIST_FILE = NoteWork/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.obukte.NoteWork;
+				PRODUCT_BUNDLE_IDENTIFIER = com.erdenbatuhan.NoteWork;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
