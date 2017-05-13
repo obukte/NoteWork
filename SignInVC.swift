@@ -24,6 +24,8 @@ class SignInVC: UIViewController {
     
     @IBOutlet weak var signUpLabel: UILabel!
     
+    var userID: String?
+    
     //keyboard frame size
     var keyboard = CGRect()
     
@@ -114,11 +116,18 @@ class SignInVC: UIViewController {
                 return
             }
             
+            self.userID = user?.uid
             self.performSegue(withIdentifier: "goToFeedScreen", sender: nil)
         })
         
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToFeedScreen" {
+            if let destination = segue.destination as? ProfileVC {
+                    destination.userID = self.userID
+            }
+        }
+    }
 }
 

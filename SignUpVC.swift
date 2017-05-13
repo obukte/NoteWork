@@ -23,6 +23,8 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var selectedImageFromPicker: UIImage?
+    
     // reset scroll view
     var scrollViewHeight : CGFloat = 0
     
@@ -71,6 +73,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         userImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        selectedImageFromPicker = info[UIImagePickerControllerEditedImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -150,31 +153,50 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             guard let uid = user?.uid else {
                 return
             }
+            //upload profile photo to storage
+            let imageName = NSUUID().uuidString
+            let storageRef = FIRStorage.storage().reference().child("\(imageName).png")
             
-            let ref = FIRDatabase.database().reference(fromURL: "https://notework-b922a.firebaseio.com/")
-            let usersReference = ref.child("users").child(uid)
-            let values = ["name": name, "username": username , "email": email]
-            usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
-                if err != nil {
+            if let uploadData = UIImagePNGRepresentation(self.userImg.image!){
+                
+                 storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                    
+                    if error != nil {
+                        return
+                    }
+                    //metadata get url as string and put it in firebase
+                    if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
+                        let values = ["name": name, "username": username , "email": email, "profileImageUrl": profileImageUrl]
+                        self.registerUserIntoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
+                    }
+                 })
+            }
+        })
+    }
+    
+    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
+        let ref = FIRDatabase.database().reference(fromURL: "https://notework-b922a.firebaseio.com/")
+        let usersReference = ref.child("users").child(uid)
+        usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
+            if err != nil {
+                return
+            }
+            
+            FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (errr) in
+                
+                if errr != nil {
                     return
                 }
                 
-                FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (errr) in
-                    
-                    if errr != nil {
-                        return
-                    }
-                    
-                    let alert = UIAlertController(title: "Your account has been created successfully!", message: "Please check your email adress for verification of your account then sign in.", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                        self.dismiss(animated: true, completion: nil)
-                    }))
-                    self.present(alert,animated: true, completion: nil)
-                    
-                })
+                let alert = UIAlertController(title: "Your account has been created successfully!", message: "Please check your email adress for verification of your account then sign in.", preferredStyle: UIAlertControllerStyle.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert,animated: true, completion: nil)
+                
             })
-            
         })
+        
     }
 
 }

@@ -14,6 +14,8 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var userFullName: UILabel!
     @IBOutlet weak var userDepartment: UILabel!
     
+    var userID: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +23,10 @@ class ProfileVC: UIViewController {
         //rounded user Image
         userImage.layer.cornerRadius = userImage.frame.size.width/2
         userImage.clipsToBounds = true
+        
+        print("USER ID")
+        print(userID)
+        
     }
 
     override func didReceiveMemoryWarning() {

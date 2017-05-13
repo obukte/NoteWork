@@ -511,7 +511,66 @@
                 </view>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E62-7r-o8G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3884" y="1256.2218890554723"/>
+            <point key="canvasLocation" x="4034" y="1256"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kt0-Js-0RO">
+            <objects>
+                <viewController id="zXP-1D-J6m" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IjQ-hp-EuH"/>
+                        <viewControllerLayoutGuide type="bottom" id="0am-SB-HOd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="16V-IY-dWl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your post" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gg5-f3-Upc">
+                                <rect key="frame" x="30" y="192" width="314" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="black_photo_btn" translatesAutoresizingMaskIntoConstraints="NO" id="EYy-YM-SHD">
+                                <rect key="frame" x="30" y="230" width="314" height="252"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.50588235290000005" green="0.78039215689999997" blue="0.51764705879999995" alpha="0.29149721746575341" colorSpace="custom" customColorSpace="sRGB"/>
+                            </imageView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g9h-rF-b9h">
+                                <rect key="frame" x="0.0" y="490" width="375" height="177"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYD-wM-Ge9">
+                                <rect key="frame" x="183" y="154" width="161" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Select Subject">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="POST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfX-uF-4ni">
+                                <rect key="frame" x="30" y="72" width="314" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aLY-cP-M0q">
+                                <rect key="frame" x="30" y="154" width="145" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epr-eF-kMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4032.8000000000002" y="-191.1544227886057"/>
         </scene>
         <!--NoteWork-->
         <scene sceneID="Ad1-iK-sz2">
@@ -527,7 +586,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="NoteWork" id="rjW-2Q-CmM">
-                        <barButtonItem key="rightBarButtonItem" image="newmessage" id="fil-aQ-KEx"/>
+                        <barButtonItem key="rightBarButtonItem" image="newmessage" id="fil-aQ-KEx">
+                            <connections>
+                                <segue destination="zXP-1D-J6m" kind="show" id="76P-Ra-CEl"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmG-xx-lhs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -773,6 +836,7 @@
         <image name="Settings" width="25" height="25"/>
         <image name="Twitter" width="580" height="124"/>
         <image name="avatar" width="462" height="462"/>
+        <image name="black_photo_btn" width="20" height="18"/>
         <image name="newmessage" width="21" height="21"/>
     </resources>
 </document>
