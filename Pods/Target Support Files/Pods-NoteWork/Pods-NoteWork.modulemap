@@ -1,0 +1,6 @@
+framework module Pods_NoteWork {
+  umbrella header "Pods-NoteWork-umbrella.h"
+
+  export *
+  module * { export * }
+}
