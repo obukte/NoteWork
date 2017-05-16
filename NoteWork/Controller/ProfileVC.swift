@@ -1,28 +1,37 @@
 //
-//  FeedVC.swift
+//  ProfileVC.swift
 //  NoteWork
 //
-//  Created by OMER BUKTE on 5/8/17.
-//  Copyright © 2017 Omer Bukte. All rights reserved.
+//  Copyright © 2017 Team Notework. All rights reserved.
 //
 
 import UIKit
 
-class FeedVC: UIViewController {
+class ProfileVC: UIViewController {
 
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userFullName: UILabel!
+    @IBOutlet weak var userDepartment: UILabel!
+    
     var userID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
+        //rounded user Image
+        userImage.layer.cornerRadius = userImage.frame.size.width/2
+        userImage.clipsToBounds = true
+        
+        print("USER ID")
+        print(userID)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

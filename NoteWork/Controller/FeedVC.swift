@@ -1,18 +1,18 @@
 //
-//  BrowseVC.swift
+//  FeedVC.swift
 //  NoteWork
 //
-//  Created by OMER BUKTE on 5/8/17.
-//  Copyright © 2017 Omer Bukte. All rights reserved.
+//  Copyright © 2017 Team Notework. All rights reserved.
 //
 
 import UIKit
 
-class BrowseVC: UIViewController {
+class FeedVC: UIViewController {
 
+    var userID: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
@@ -20,7 +20,6 @@ class BrowseVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation

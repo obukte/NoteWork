@@ -2,8 +2,7 @@
 //  TextFieldView.swift
 //  NoteWork
 //
-//  Created by OMER BUKTE on 5/4/17.
-//  Copyright © 2017 Omer Bukte. All rights reserved.
+//  Copyright © 2017 Team Notework. All rights reserved.
 //
 
 import UIKit
@@ -25,5 +24,4 @@ class TextFieldView: UITextField {
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.insetBy(dx: 10, dy: 5)
     }
-
 }

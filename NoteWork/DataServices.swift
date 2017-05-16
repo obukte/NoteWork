@@ -2,8 +2,7 @@
 //  DataServices.swift
 //  NoteWork
 //
-//  Created by OMER BUKTE on 5/8/17.
-//  Copyright © 2017 Omer Bukte. All rights reserved.
+//  Copyright © 2017 Team Notework. All rights reserved.
 //
 
 import Foundation
@@ -14,6 +13,7 @@ import KeychainSwift
 let DB_BASE = FIRDatabase.database().reference()
 
 class DataService{
+    
     private var _keychain = KeychainSwift()
     private var _refDatabase = DB_BASE
     
@@ -21,6 +21,7 @@ class DataService{
         get {
             return _keychain
         }
+        
         set {
             _keychain = newValue
         }

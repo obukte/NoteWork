@@ -1,14 +1,13 @@
 //
-//  SocialLoginButtonView.swift
+//  UpAndDownView.swift
 //  NoteWork
 //
-//  Created by OMER BUKTE on 5/4/17.
-//  Copyright © 2017 Omer Bukte. All rights reserved.
+//  Copyright © 2017 Team Notework. All rights reserved.
 //
 
 import UIKit
 
-class SocialLoginButtonView: UIButton {
+class UpAndDownView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -17,15 +16,7 @@ class SocialLoginButtonView: UIButton {
         layer.shadowOpacity = 0.8
         layer.shadowRadius = 5.0
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        layer.cornerRadius = 2.0
         
-        imageView?.contentMode = .scaleAspectFit
     }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        layer.cornerRadius = self.frame.width/10
-    }
-    
-
 }

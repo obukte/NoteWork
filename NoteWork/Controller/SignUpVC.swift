@@ -2,15 +2,14 @@
 //  SignUpVC.swift
 //  NoteWork
 //
-//  Created by OMER BUKTE on 5/8/17.
-//  Copyright © 2017 Omer Bukte. All rights reserved.
+//  Copyright © 2017 Team Notework. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
 class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var userImg: UIImageView!
     
     @IBOutlet weak var emailTxtField: UITextField!
@@ -24,17 +23,11 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var scrollView: UIScrollView!
     
     var selectedImageFromPicker: UIImage?
-    
-    // reset scroll view
-    var scrollViewHeight : CGFloat = 0
-    
-    //keyboard frame size
-    var keyboard = CGRect()
-    
+    var scrollViewHeight : CGFloat = 0 // reset scroll view
+    var keyboard = CGRect() // keyboard frame size
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // scrollview frame size
         scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -63,28 +56,28 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func loadImg(_ recognizer: UITapGestureRecognizer) {
-        
         let picker = UIImagePickerController()
+        
         picker.delegate = self
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
+        
         present(picker, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         userImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
         selectedImageFromPicker = info[UIImagePickerControllerEditedImage] as? UIImage
+        
         self.dismiss(animated: true, completion: nil)
     }
     
     // hide keyboard if tapped
     func hideKeyboardTap(_ recognizer: UITapGestureRecognizer) {
         self.view.endEditing(true)
-        
     }
     
     func showKeyboard(_ notification:NSNotification){
-        
         keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue)
         
         UIView.animate(withDuration: 0.4, animations: { () -> Void in
@@ -93,7 +86,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func hideKeyboard(_ notification: NSNotification){
-        
         // move down UI
         UIView.animate(withDuration: 0.4, animations: { () -> Void in
             self.scrollView.frame.size.height = self.view.frame.height
@@ -101,31 +93,38 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     @IBAction func signUpBtnTapped(_ sender: Any) {
-        
         if passwordTxtField.text != repeatPassworddTxtField.text {
             let alert = UIAlertController(title: "Error", message: "Passwords should match!", preferredStyle: UIAlertControllerStyle.alert)
+            
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert,animated: true, completion: nil)
+            
             return
         }
         
         if (usernameTxtField.text?.isEmpty == true){
             let alert = UIAlertController(title: "Error", message: "Please fill the username field!", preferredStyle: UIAlertControllerStyle.alert)
+            
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert,animated: true, completion: nil)
+            
             return
         }
         if (nameTxtField.text?.isEmpty == true){
             let alert = UIAlertController(title: "Error", message: "Please fill the name field!", preferredStyle: UIAlertControllerStyle.alert)
+            
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert,animated: true, completion: nil)
+            
             return
         }
         
         if (passwordTxtField.text?.isEmpty == true){
             let alert = UIAlertController(title: "Error", message: "Please fill the password field!", preferredStyle: UIAlertControllerStyle.alert)
+            
             alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
             self.present(alert,animated: true, completion: nil)
+            
             return
         }
         
@@ -137,15 +136,23 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func handleRegister() {
+        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
         
         guard let email = emailTxtField.text, let password = passwordTxtField.text, let name = nameTxtField.text, let username = usernameTxtField.text else {
             return
         }
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-            
             if error != nil {
-                let alert = UIAlertController(title: "Error", message: "Either this email is already been taken or you did not entered a valid email.Please Check", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Error", message: "Either this email is already been taken or you did not entered a valid email. Please Check!", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
                 self.present(alert,animated: true, completion: nil)
             }
@@ -153,50 +160,51 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             guard let uid = user?.uid else {
                 return
             }
-            //upload profile photo to storage
+            
+            // upload profile photo to storage
             let imageName = NSUUID().uuidString
             let storageRef = FIRStorage.storage().reference().child("\(imageName).png")
             
             if let uploadData = UIImagePNGRepresentation(self.userImg.image!){
-                
-                 storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
+                storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
                     
                     if error != nil {
                         return
                     }
-                    //metadata get url as string and put it in firebase
+                    
+                    // metadata get url as string and put it in firebase
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
-                        let values = ["name": name, "username": username , "email": email, "profileImageUrl": profileImageUrl]
-                        self.registerUserIntoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
+                        let values = ["name": name, "username": username , "email": email, "pasword": password, "profileImageUrl": profileImageUrl]
+                        self.registerUserIntoDatabaseWithUID(oldAlert: alert, uid: uid, values: values as [String : AnyObject])
                     }
-                 })
+                })
             }
         })
     }
     
-    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
+    private func registerUserIntoDatabaseWithUID(oldAlert: UIAlertController, uid: String, values: [String: AnyObject]) {
         let ref = FIRDatabase.database().reference(fromURL: "https://notework-b922a.firebaseio.com/")
         let usersReference = ref.child("users").child(uid)
+        
+        let alert = UIAlertController(title: "Your account has been created successfully!", message: "Please check your email adress for verification of your account then sign in.", preferredStyle: UIAlertControllerStyle.alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        oldAlert.dismiss(animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
+        
         usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
             if err != nil {
                 return
             }
             
             FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (errr) in
-                
                 if errr != nil {
                     return
                 }
-                
-                let alert = UIAlertController(title: "Your account has been created successfully!", message: "Please check your email adress for verification of your account then sign in.", preferredStyle: UIAlertControllerStyle.alert)
-                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { action in
-                    self.dismiss(animated: true, completion: nil)
-                }))
-                self.present(alert,animated: true, completion: nil)
-                
             })
         })
-        
     }
-
 }

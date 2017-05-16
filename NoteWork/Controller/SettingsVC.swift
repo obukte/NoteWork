@@ -2,8 +2,7 @@
 //  SettingsVC.swift
 //  NoteWork
 //
-//  Created by OMER BUKTE on 5/9/17.
-//  Copyright © 2017 Omer Bukte. All rights reserved.
+//  Copyright © 2017 Team Notework. All rights reserved.
 //
 
 import UIKit
@@ -17,11 +16,8 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var departmentTextField: UITextField!
     
-    // reset scroll view
-    var scrollViewHeight : CGFloat = 0
-    
-    //keyboard frame size
-    var keyboard = CGRect()
+    var scrollViewHeight : CGFloat = 0 // reset scroll view
+    var keyboard = CGRect() // keyboard frame size
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +34,14 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         // declare hide kyboard tap
         let hideTap = UITapGestureRecognizer(target: self, action: #selector(SignUpVC.hideKeyboardTap(_:)))
         hideTap.numberOfTapsRequired = 1
+        
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap)
         
         //image picker starter
         let imgTap = UITapGestureRecognizer(target: self, action: #selector(SignUpVC.loadImg(_:)))
         imgTap.numberOfTapsRequired = 1
+        
         userImage.isUserInteractionEnabled = true
         userImage.addGestureRecognizer(imgTap)
         
@@ -55,11 +53,12 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     }
 
     func loadImg(_ recognizer: UITapGestureRecognizer) {
-        
         let picker = UIImagePickerController()
+        
         picker.delegate = self
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
+        
         present(picker, animated: true, completion: nil)
     }
     
@@ -75,7 +74,6 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     }
     
     func showKeyboard(_ notification:NSNotification){
-        
         keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue)
         
         UIView.animate(withDuration: 0.4, animations: { () -> Void in
@@ -84,7 +82,6 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     }
     
     func hideKeyboard(_ notification: NSNotification){
-        
         // move down UI
         UIView.animate(withDuration: 0.4, animations: { () -> Void in
             self.scrollView.frame.size.height = self.view.frame.height
@@ -98,13 +95,11 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     
     //IMPLEMENT SAVE BUTTON TAPPED
     @IBAction func saveButtonTapped(_ sender: Any) {
+        
     }
+    
     //IMPLEMENT LOG OUT BUTTON TAPPED
     @IBAction func logOutButtonTapped(_ sender: Any) {
+        
     }
-    
-    
-
-    
-
 }
