@@ -10,17 +10,17 @@ import Firebase
 
 class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var userImg: UIImageView!
     
+    @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var usernameTxtField: UITextField!
-    
-    @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var passwordTxtField: UITextField!
     @IBOutlet weak var repeatPassworddTxtField: UITextField!
-    @IBOutlet weak var nameTxtField: UITextField!
-    
-    @IBOutlet weak var scrollView: UIScrollView!
+
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var cancelButton: LogInButtonView!
     
     var selectedImageFromPicker: UIImage?
     var scrollViewHeight : CGFloat = 0 // reset scroll view
@@ -92,7 +92,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         })
     }
     
-    @IBAction func signUpBtnTapped(_ sender: Any) {
+    @IBAction func signUpButtonTapped(_ sender: Any) {
         if passwordTxtField.text != repeatPassworddTxtField.text {
             let alert = UIAlertController(title: "Error", message: "Passwords should match!", preferredStyle: UIAlertControllerStyle.alert)
             
@@ -136,15 +136,8 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func handleRegister() {
-        let alert = UIAlertController(title: nil, message: "Please wait...", preferredStyle: .alert)
-        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
-        
-        loadingIndicator.hidesWhenStopped = true
-        loadingIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        loadingIndicator.startAnimating();
-        
-        alert.view.addSubview(loadingIndicator)
-        present(alert, animated: true, completion: nil)
+        signUpButton.isHidden = true;
+        cancelButton.isHidden = true;
         
         guard let email = emailTxtField.text, let password = passwordTxtField.text, let name = nameTxtField.text, let username = usernameTxtField.text else {
             return
@@ -152,8 +145,12 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
             if error != nil {
-                let alert = UIAlertController(title: "Error", message: "Either this email is already been taken or you did not entered a valid email. Please Check!", preferredStyle: UIAlertControllerStyle.alert)
+                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                
+                self.signUpButton.isHidden = false;
+                self.cancelButton.isHidden = false;
+                
                 self.present(alert,animated: true, completion: nil)
             }
             
@@ -162,8 +159,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             }
             
             // upload profile photo to storage
-            let imageName = NSUUID().uuidString
-            let storageRef = FIRStorage.storage().reference().child("\(imageName).png")
+            let storageRef = FIRStorage.storage().reference().child("\(user?.uid ?? "null")-pp.png")
             
             if let uploadData = UIImagePNGRepresentation(self.userImg.image!){
                 storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
@@ -175,14 +171,14 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     // metadata get url as string and put it in firebase
                     if let profileImageUrl = metadata?.downloadURL()?.absoluteString {
                         let values = ["name": name, "username": username , "email": email, "pasword": password, "profileImageUrl": profileImageUrl]
-                        self.registerUserIntoDatabaseWithUID(oldAlert: alert, uid: uid, values: values as [String : AnyObject])
+                        self.registerUserIntoDatabaseWithUID(uid: uid, values: values as [String : AnyObject])
                     }
                 })
             }
         })
     }
     
-    private func registerUserIntoDatabaseWithUID(oldAlert: UIAlertController, uid: String, values: [String: AnyObject]) {
+    private func registerUserIntoDatabaseWithUID(uid: String, values: [String: AnyObject]) {
         let ref = FIRDatabase.database().reference(fromURL: "https://notework-b922a.firebaseio.com/")
         let usersReference = ref.child("users").child(uid)
         
@@ -192,7 +188,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             self.dismiss(animated: true, completion: nil)
         }))
         
-        oldAlert.dismiss(animated: true, completion: nil)
         self.present(alert, animated: true, completion: nil)
         
         usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in

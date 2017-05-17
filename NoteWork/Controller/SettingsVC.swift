@@ -16,8 +16,8 @@ class SettingsVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var departmentTextField: UITextField!
     
-    var scrollViewHeight : CGFloat = 0 // reset scroll view
-    var keyboard = CGRect() // keyboard frame size
+    private var scrollViewHeight : CGFloat = 0 // reset scroll view
+    private var keyboard = CGRect() // keyboard frame size
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,8 +8,6 @@
 import UIKit
 
 class FeedVC: UIViewController {
-
-    var userID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()

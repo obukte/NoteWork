@@ -5,19 +5,20 @@
 //  Copyright © 2017 Team Notework. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class User {
+class User: NSObject {
     
-    var name: String     = ""
-    var email: String    = ""
-    var username: String = ""
-    var password: String = ""
-
-    init(name: String, email: String, username: String, password: String) {
-        self.name = name
-        self.email = email
-        self.username = username
-        self.password = password
+    var name: String?
+    var email: String?
+    var username: String?
+    var profileImageUrl: String?
+    
+    override init () {
+        
+    }
+    
+    func pes() {
+        print("\(email ?? "null"), \(name ?? "null"), \(profileImageUrl ?? "null"), \(username ?? "null")");
     }
 }

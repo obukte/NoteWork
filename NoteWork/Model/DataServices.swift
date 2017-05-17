@@ -5,14 +5,13 @@
 //  Copyright © 2017 Team Notework. All rights reserved.
 //
 
-import Foundation
 import Firebase
 import FirebaseDatabase
 import KeychainSwift
 
 let DB_BASE = FIRDatabase.database().reference()
 
-class DataService{
+class DataService {
     
     private var _keychain = KeychainSwift()
     private var _refDatabase = DB_BASE
@@ -25,7 +24,5 @@ class DataService{
         set {
             _keychain = newValue
         }
-        
     }
-    
 }

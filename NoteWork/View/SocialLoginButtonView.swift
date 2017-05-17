@@ -22,6 +22,6 @@ class SocialLoginButtonView: UIButton {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.cornerRadius = self.frame.width/10
+        layer.cornerRadius = self.frame.width / 10
     }
 }

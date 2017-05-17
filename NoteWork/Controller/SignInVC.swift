@@ -23,11 +23,12 @@ class SignInVC: UIViewController {
     
     @IBOutlet weak var signUpLabel: UILabel!
     
-    var userID: String?
-    var keyboard = CGRect() // keyboard frame size
+    private var source = AppDataSource()
+    private var keyboard = CGRect() // keyboard frame size
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        source.fetchData()
     
         // goToSignUp Menu
         signUpLabel.isUserInteractionEnabled = true
@@ -68,7 +69,7 @@ class SignInVC: UIViewController {
     }
 
     func goToSignUp(){
-        performSegue(withIdentifier: "goToSignUp", sender: nil)
+        performSegue(withIdentifier: "GoToSignUp", sender: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -116,23 +117,13 @@ class SignInVC: UIViewController {
                 let alert = UIAlertController(title: "Error", message: "Check your email or password!", preferredStyle: UIAlertControllerStyle.alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                self.present(alert,animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
                 
                 return
             }
             
-            self.userID = user?.uid
-            self.performSegue(withIdentifier: "goToFeedScreen", sender: nil)
+            self.performSegue(withIdentifier: "GoToTabBar", sender: nil)
         })
-        
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToFeedScreen" {
-            if let destination = segue.destination as? ProfileVC {
-                    destination.userID = self.userID
-            }
-        }
     }
 }
 
