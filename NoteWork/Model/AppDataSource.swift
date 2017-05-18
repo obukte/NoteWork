@@ -7,14 +7,7 @@
 
 import Firebase
 
-@objc protocol AppDataDelegate {
-    @objc optional func fun1()
-    @objc optional func fun2()
-}
-
 class AppDataSource {
-    
-    var delegate: AppDataDelegate?
     
     func fetchData() {
         fetchUsers()
@@ -29,7 +22,10 @@ class AppDataSource {
                 user.name = dictionary["name"] as? String
                 user.email = dictionary["email"] as? String
                 user.username = dictionary["username"] as? String
-                user.profileImageUrl = dictionary["profileImageUrl"] as? String
+                
+                FIRStorage.storage().reference(forURL: (dictionary["profileImageUrl"] as? String)!).data(withMaxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+                    user.image = UIImage(data: data!)!
+                })
                 
                 AppMaster.users.append(user)
             }
@@ -41,13 +37,28 @@ class AppDataSource {
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 let note = Note()
                 
+                note.id = dictionary["id"] as? String
+                note.sender = dictionary["sender"] as? String
                 note.courseCode = dictionary["courseCode"] as? String
-                note.courseName = dictionary["courseName"] as? String
-                note.noteWritten = dictionary["noteWritten"] as? String
-                note.noteImageUrl = dictionary["noteImageUrl"] as? String
                 
-                AppMaster.notes.append(note)
+                FIRStorage.storage().reference(forURL: (dictionary["noteImageUrl"] as? String)!).data(withMaxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+                    note.image = UIImage(data: data!)!
+                })
+                
+                if self.doesItemExist(note: note) == false {
+                    AppMaster.notes.append(note)
+                }
             }
         })
+    }
+    
+    func doesItemExist(note: Note) -> Bool {
+        for subNote in AppMaster.notes {
+            if subNote.id == note.id {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }

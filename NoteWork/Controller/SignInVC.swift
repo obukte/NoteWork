@@ -11,12 +11,10 @@ import FirebaseDatabase
 
 class SignInVC: UIViewController {
 
-    // CONSTRAINTS FOR CHANGES
     @IBOutlet weak var emailToUpContraint: NSLayoutConstraint!
     @IBOutlet weak var passwordToEmailConstraint: NSLayoutConstraint!
     @IBOutlet weak var signInBtnToPasswordConstraint: NSLayoutConstraint!
     
-    // labels and text fields
     @IBOutlet weak var orLblToSignInConstrain: NSLayoutConstraint!
     @IBOutlet weak var usernameTextField: TextFieldView!
     @IBOutlet weak var passwordTextField: TextFieldView!
@@ -29,10 +27,6 @@ class SignInVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         source.fetchData()
-    
-        // goToSignUp Menu
-        signUpLabel.isUserInteractionEnabled = true
-        signUpLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(SignInVC.goToSignUp)))
         
         // check notifications if keyboard is shown or not
         NotificationCenter.default.addObserver(self, selector: #selector(SignUpVC.showKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -67,10 +61,7 @@ class SignInVC: UIViewController {
             self.passwordToEmailConstraint.constant = 10
         })
     }
-
-    func goToSignUp(){
-        performSegue(withIdentifier: "GoToSignUp", sender: nil)
-    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -99,14 +90,6 @@ class SignInVC: UIViewController {
         
     }
     
-    @IBAction func loginWithFBTapped(_ sender: Any) {
-        
-    }
-    
-    @IBAction func loginWithTwitterTapped(_ sender: Any) {
-        
-    }
-    
     func handleLogin() {
         guard let email = usernameTextField.text , let password = passwordTextField.text else {
             return
@@ -122,6 +105,7 @@ class SignInVC: UIViewController {
                 return
             }
             
+            AppMaster.sudo = User(email: email)
             self.performSegue(withIdentifier: "GoToTabBar", sender: nil)
         })
     }

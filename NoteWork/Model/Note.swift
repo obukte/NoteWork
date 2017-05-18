@@ -9,10 +9,10 @@ import UIKit
 
 class Note: NSObject {
     
+    var id: String?
+    var sender: String?
     var courseCode: String?
-    var courseName: String?
-    var noteWritten: String?
-    var noteImageUrl: String?
+    var image: UIImage?
     
     override init() {
         

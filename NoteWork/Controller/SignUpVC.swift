@@ -11,7 +11,7 @@ import Firebase
 class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var userImg: UIImageView!
+    @IBOutlet weak var userImage: UIImageView!
     
     @IBOutlet weak var nameTxtField: UITextField!
     @IBOutlet weak var emailTxtField: UITextField!
@@ -22,7 +22,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var cancelButton: LogInButtonView!
     
-    var selectedImageFromPicker: UIImage?
     var scrollViewHeight : CGFloat = 0 // reset scroll view
     var keyboard = CGRect() // keyboard frame size
     
@@ -38,21 +37,22 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         NotificationCenter.default.addObserver(self, selector: #selector(SignUpVC.showKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SignUpVC.hideKeyboard(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
-        // declare hide kyboard tap
+        // declare hide keyboard tap
         let hideTap = UITapGestureRecognizer(target: self, action: #selector(SignUpVC.hideKeyboardTap(_:)))
         hideTap.numberOfTapsRequired = 1
         self.view.isUserInteractionEnabled = true
         self.view.addGestureRecognizer(hideTap)
         
-        //image picker starter
+        // image picker starter
         let imgTap = UITapGestureRecognizer(target: self, action: #selector(SignUpVC.loadImg(_:)))
         imgTap.numberOfTapsRequired = 1
-        userImg.isUserInteractionEnabled = true
-        userImg.addGestureRecognizer(imgTap)
         
-        //rounded userImage
-        userImg.layer.cornerRadius = userImg.frame.size.width/2
-        userImg.clipsToBounds = true
+        userImage.isUserInteractionEnabled = true
+        userImage.addGestureRecognizer(imgTap)
+        
+        // rounded userImage
+        userImage.layer.cornerRadius = userImage.frame.size.width / 2
+        userImage.clipsToBounds = true
     }
     
     func loadImg(_ recognizer: UITapGestureRecognizer) {
@@ -66,9 +66,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        userImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
-        selectedImageFromPicker = info[UIImagePickerControllerEditedImage] as? UIImage
-        
+        userImage.image = info[UIImagePickerControllerEditedImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -161,7 +159,7 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             // upload profile photo to storage
             let storageRef = FIRStorage.storage().reference().child("\(user?.uid ?? "null")-pp.png")
             
-            if let uploadData = UIImagePNGRepresentation(self.userImg.image!){
+            if let uploadData = UIImagePNGRepresentation(self.userImage.image!){
                 storageRef.put(uploadData, metadata: nil, completion: { (metadata, error) in
                     
                     if error != nil {
@@ -194,12 +192,6 @@ class SignUpVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
             if err != nil {
                 return
             }
-            
-            FIRAuth.auth()?.currentUser?.sendEmailVerification(completion: { (errr) in
-                if errr != nil {
-                    return
-                }
-            })
         })
     }
 }

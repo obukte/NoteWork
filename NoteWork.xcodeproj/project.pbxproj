@@ -13,10 +13,10 @@
 		42D50E291EB9EF75005E7E4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42D50E281EB9EF75005E7E4A /* Assets.xcassets */; };
 		42D50E2C1EB9EF75005E7E4A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42D50E2A1EB9EF75005E7E4A /* LaunchScreen.storyboard */; };
 		62E7F94677E87872E01C5508 /* Pods_NoteWork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79721260212FC37E59883B /* Pods_NoteWork.framework */; };
-		747331BD1ECBBB8100F6D319 /* BrowseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331B71ECBBB8100F6D319 /* BrowseVC.swift */; };
+		740F49B11ECD905A0049EEAB /* NoteDescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740F49B01ECD905A0049EEAB /* NoteDescriptionVC.swift */; };
+		747331BD1ECBBB8100F6D319 /* CoursesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331B71ECBBB8100F6D319 /* CoursesVC.swift */; };
 		747331BE1ECBBB8100F6D319 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331B81ECBBB8100F6D319 /* FeedVC.swift */; };
 		747331BF1ECBBB8100F6D319 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331B91ECBBB8100F6D319 /* ProfileVC.swift */; };
-		747331C01ECBBB8100F6D319 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331BA1ECBBB8100F6D319 /* SettingsVC.swift */; };
 		747331C11ECBBB8100F6D319 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331BB1ECBBB8100F6D319 /* SignInVC.swift */; };
 		747331C21ECBBB8100F6D319 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331BC1ECBBB8100F6D319 /* SignUpVC.swift */; };
 		747331C71ECBBBBF00F6D319 /* LogInButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331C31ECBBBBF00F6D319 /* LogInButtonView.swift */; };
@@ -25,10 +25,14 @@
 		747331CA1ECBBBBF00F6D319 /* UpAndDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331C61ECBBBBF00F6D319 /* UpAndDownView.swift */; };
 		747331CC1ECBBBF200F6D319 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331CB1ECBBBF200F6D319 /* User.swift */; };
 		7482EA3E1ECBCB2800FABFAA /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482EA3D1ECBCB2800FABFAA /* DataServices.swift */; };
+		74C2BC2B1ECD83CA00C89E98 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2BC2A1ECD83CA00C89E98 /* ProfileTableViewCell.swift */; };
 		74E3C88C1ECC67D8009B11E5 /* AppDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C88B1ECC67D8009B11E5 /* AppDataSource.swift */; };
 		74E3C88E1ECC684D009B11E5 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C88D1ECC684D009B11E5 /* Note.swift */; };
-		74E3C8901ECC89DB009B11E5 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C88F1ECC89DB009B11E5 /* TabBarVC.swift */; };
 		74E3C8941ECC8FE3009B11E5 /* AppMaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C8931ECC8FE3009B11E5 /* AppMaster.swift */; };
+		74E3C8961ECCF8FE009B11E5 /* CoursesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C8951ECCF8FE009B11E5 /* CoursesTableViewCell.swift */; };
+		74E3C8981ECD1104009B11E5 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C8971ECD1104009B11E5 /* PostVC.swift */; };
+		74E3C89A1ECD1C08009B11E5 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C8991ECD1C08009B11E5 /* Course.swift */; };
+		74E3C89C1ECD1EF8009B11E5 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C89B1ECD1EF8009B11E5 /* FeedTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,10 +43,10 @@
 		42D50E281EB9EF75005E7E4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42D50E2B1EB9EF75005E7E4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42D50E2D1EB9EF75005E7E4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		747331B71ECBBB8100F6D319 /* BrowseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowseVC.swift; path = Controller/BrowseVC.swift; sourceTree = "<group>"; };
+		740F49B01ECD905A0049EEAB /* NoteDescriptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteDescriptionVC.swift; path = Controller/NoteDescriptionVC.swift; sourceTree = "<group>"; };
+		747331B71ECBBB8100F6D319 /* CoursesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoursesVC.swift; path = Controller/CoursesVC.swift; sourceTree = "<group>"; };
 		747331B81ECBBB8100F6D319 /* FeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedVC.swift; path = Controller/FeedVC.swift; sourceTree = "<group>"; };
 		747331B91ECBBB8100F6D319 /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileVC.swift; path = Controller/ProfileVC.swift; sourceTree = "<group>"; };
-		747331BA1ECBBB8100F6D319 /* SettingsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsVC.swift; path = Controller/SettingsVC.swift; sourceTree = "<group>"; };
 		747331BB1ECBBB8100F6D319 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInVC.swift; path = Controller/SignInVC.swift; sourceTree = "<group>"; };
 		747331BC1ECBBB8100F6D319 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpVC.swift; path = Controller/SignUpVC.swift; sourceTree = "<group>"; };
 		747331C31ECBBBBF00F6D319 /* LogInButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInButtonView.swift; path = View/LogInButtonView.swift; sourceTree = "<group>"; };
@@ -51,10 +55,14 @@
 		747331C61ECBBBBF00F6D319 /* UpAndDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpAndDownView.swift; path = View/UpAndDownView.swift; sourceTree = "<group>"; };
 		747331CB1ECBBBF200F6D319 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		7482EA3D1ECBCB2800FABFAA /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataServices.swift; path = Model/DataServices.swift; sourceTree = "<group>"; };
+		74C2BC2A1ECD83CA00C89E98 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = View/ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		74E3C88B1ECC67D8009B11E5 /* AppDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDataSource.swift; path = Model/AppDataSource.swift; sourceTree = "<group>"; };
 		74E3C88D1ECC684D009B11E5 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Model/Note.swift; sourceTree = "<group>"; };
-		74E3C88F1ECC89DB009B11E5 /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		74E3C8931ECC8FE3009B11E5 /* AppMaster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppMaster.swift; path = Model/AppMaster.swift; sourceTree = "<group>"; };
+		74E3C8951ECCF8FE009B11E5 /* CoursesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoursesTableViewCell.swift; path = View/CoursesTableViewCell.swift; sourceTree = "<group>"; };
+		74E3C8971ECD1104009B11E5 /* PostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostVC.swift; path = Controller/PostVC.swift; sourceTree = "<group>"; };
+		74E3C8991ECD1C08009B11E5 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Course.swift; path = Model/Course.swift; sourceTree = "<group>"; };
+		74E3C89B1ECD1EF8009B11E5 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedTableViewCell.swift; path = View/FeedTableViewCell.swift; sourceTree = "<group>"; };
 		87821E57DDDBAB627E8F5867 /* Pods-NoteWork.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteWork.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoteWork/Pods-NoteWork.debug.xcconfig"; sourceTree = "<group>"; };
 		9F79721260212FC37E59883B /* Pods_NoteWork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoteWork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D168EF0EBBAB14A8D524D0A4 /* Pods-NoteWork.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteWork.release.xcconfig"; path = "Pods/Target Support Files/Pods-NoteWork/Pods-NoteWork.release.xcconfig"; sourceTree = "<group>"; };
@@ -111,6 +119,7 @@
 			children = (
 				7482EA3D1ECBCB2800FABFAA /* DataServices.swift */,
 				74E3C88B1ECC67D8009B11E5 /* AppDataSource.swift */,
+				74E3C8991ECD1C08009B11E5 /* Course.swift */,
 				74E3C88D1ECC684D009B11E5 /* Note.swift */,
 				747331CB1ECBBBF200F6D319 /* User.swift */,
 				74E3C8931ECC8FE3009B11E5 /* AppMaster.swift */,
@@ -125,6 +134,9 @@
 				747331C41ECBBBBF00F6D319 /* SocialLoginButtonView.swift */,
 				747331C51ECBBBBF00F6D319 /* TextFieldView.swift */,
 				747331C61ECBBBBF00F6D319 /* UpAndDownView.swift */,
+				74E3C8951ECCF8FE009B11E5 /* CoursesTableViewCell.swift */,
+				74E3C89B1ECD1EF8009B11E5 /* FeedTableViewCell.swift */,
+				74C2BC2A1ECD83CA00C89E98 /* ProfileTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -132,13 +144,13 @@
 		42D50E601EBB4FED005E7E4A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				74E3C88F1ECC89DB009B11E5 /* TabBarVC.swift */,
-				747331B71ECBBB8100F6D319 /* BrowseVC.swift */,
+				747331B71ECBBB8100F6D319 /* CoursesVC.swift */,
 				747331B81ECBBB8100F6D319 /* FeedVC.swift */,
 				747331B91ECBBB8100F6D319 /* ProfileVC.swift */,
-				747331BA1ECBBB8100F6D319 /* SettingsVC.swift */,
 				747331BB1ECBBB8100F6D319 /* SignInVC.swift */,
 				747331BC1ECBBB8100F6D319 /* SignUpVC.swift */,
+				74E3C8971ECD1104009B11E5 /* PostVC.swift */,
+				740F49B01ECD905A0049EEAB /* NoteDescriptionVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -285,18 +297,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				740F49B11ECD905A0049EEAB /* NoteDescriptionVC.swift in Sources */,
 				747331CC1ECBBBF200F6D319 /* User.swift in Sources */,
-				74E3C8901ECC89DB009B11E5 /* TabBarVC.swift in Sources */,
 				7482EA3E1ECBCB2800FABFAA /* DataServices.swift in Sources */,
 				74E3C8941ECC8FE3009B11E5 /* AppMaster.swift in Sources */,
-				747331C01ECBBB8100F6D319 /* SettingsVC.swift in Sources */,
+				74E3C8981ECD1104009B11E5 /* PostVC.swift in Sources */,
 				747331BF1ECBBB8100F6D319 /* ProfileVC.swift in Sources */,
 				747331C91ECBBBBF00F6D319 /* TextFieldView.swift in Sources */,
+				74E3C89A1ECD1C08009B11E5 /* Course.swift in Sources */,
 				747331C71ECBBBBF00F6D319 /* LogInButtonView.swift in Sources */,
+				74E3C89C1ECD1EF8009B11E5 /* FeedTableViewCell.swift in Sources */,
 				747331C11ECBBB8100F6D319 /* SignInVC.swift in Sources */,
 				747331BE1ECBBB8100F6D319 /* FeedVC.swift in Sources */,
 				747331CA1ECBBBBF00F6D319 /* UpAndDownView.swift in Sources */,
-				747331BD1ECBBB8100F6D319 /* BrowseVC.swift in Sources */,
+				747331BD1ECBBB8100F6D319 /* CoursesVC.swift in Sources */,
+				74C2BC2B1ECD83CA00C89E98 /* ProfileTableViewCell.swift in Sources */,
+				74E3C8961ECCF8FE009B11E5 /* CoursesTableViewCell.swift in Sources */,
 				74E3C88E1ECC684D009B11E5 /* Note.swift in Sources */,
 				74E3C88C1ECC67D8009B11E5 /* AppDataSource.swift in Sources */,
 				747331C21ECBBB8100F6D319 /* SignUpVC.swift in Sources */,

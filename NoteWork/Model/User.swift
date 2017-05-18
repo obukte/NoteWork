@@ -12,13 +12,13 @@ class User: NSObject {
     var name: String?
     var email: String?
     var username: String?
-    var profileImageUrl: String?
+    var image: UIImage?
     
-    override init () {
+    override init() {
         
     }
     
-    func pes() {
-        print("\(email ?? "null"), \(name ?? "null"), \(profileImageUrl ?? "null"), \(username ?? "null")");
+    init (email: String) {
+        self.email = email;
     }
 }
