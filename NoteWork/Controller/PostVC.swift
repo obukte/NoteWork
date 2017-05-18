@@ -24,6 +24,10 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
         chosenImage.addGestureRecognizer(imageTap)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     func loadImg(_ recognizer: UITapGestureRecognizer) {
         let picker = UIImagePickerController()
         
@@ -35,15 +39,17 @@ class PostVC: UIViewController, UIImagePickerControllerDelegate, UINavigationCon
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        chosenImage.contentMode = UIViewContentMode.scaleAspectFit
         chosenImage.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        
         self.dismiss(animated: true, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     @IBAction func send(_ sender: Any) {
+        if chosenImage.image == #imageLiteral(resourceName: "black_photo_btn") {
+            return
+        }
+        
         sendButton.isHidden = true;
         
         let date = Date()

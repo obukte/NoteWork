@@ -51,6 +51,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         DispatchQueue.main.async {
             if AppMaster.sudo?.name == note.sender {
+                cell.userIdentifier.textColor = UIColor.cyan
                 cell.userIdentifier.text = "\(note.sender ?? "Default User") (me)"
             } else {
                 cell.userIdentifier.text = "\(note.sender ?? "Default User")"
@@ -60,5 +61,15 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "FeedDescSeg" {
+            let selectedCell = sender as! FeedTableViewCell
+            let indexPath = self.tableView.indexPath(for: selectedCell)
+            let controller = segue.destination as! NoteDescriptionVC
+            
+            controller.note = subNotes[subNotes.count - 1 - indexPath!.row]
+        }
     }
 }

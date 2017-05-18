@@ -25,6 +25,8 @@
 		747331CA1ECBBBBF00F6D319 /* UpAndDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331C61ECBBBBF00F6D319 /* UpAndDownView.swift */; };
 		747331CC1ECBBBF200F6D319 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747331CB1ECBBBF200F6D319 /* User.swift */; };
 		7482EA3E1ECBCB2800FABFAA /* DataServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7482EA3D1ECBCB2800FABFAA /* DataServices.swift */; };
+		748B1AB41ECE3ABE00D093CF /* SearchCourseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B1AB31ECE3ABE00D093CF /* SearchCourseVC.swift */; };
+		748B1AB61ECE3BAC00D093CF /* SearchCourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748B1AB51ECE3BAC00D093CF /* SearchCourseTableViewCell.swift */; };
 		74C2BC2B1ECD83CA00C89E98 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C2BC2A1ECD83CA00C89E98 /* ProfileTableViewCell.swift */; };
 		74E3C88C1ECC67D8009B11E5 /* AppDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C88B1ECC67D8009B11E5 /* AppDataSource.swift */; };
 		74E3C88E1ECC684D009B11E5 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E3C88D1ECC684D009B11E5 /* Note.swift */; };
@@ -55,6 +57,8 @@
 		747331C61ECBBBBF00F6D319 /* UpAndDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UpAndDownView.swift; path = View/UpAndDownView.swift; sourceTree = "<group>"; };
 		747331CB1ECBBBF200F6D319 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		7482EA3D1ECBCB2800FABFAA /* DataServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataServices.swift; path = Model/DataServices.swift; sourceTree = "<group>"; };
+		748B1AB31ECE3ABE00D093CF /* SearchCourseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCourseVC.swift; path = Controller/SearchCourseVC.swift; sourceTree = "<group>"; };
+		748B1AB51ECE3BAC00D093CF /* SearchCourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchCourseTableViewCell.swift; path = View/SearchCourseTableViewCell.swift; sourceTree = "<group>"; };
 		74C2BC2A1ECD83CA00C89E98 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = View/ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		74E3C88B1ECC67D8009B11E5 /* AppDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDataSource.swift; path = Model/AppDataSource.swift; sourceTree = "<group>"; };
 		74E3C88D1ECC684D009B11E5 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Note.swift; path = Model/Note.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				74E3C8951ECCF8FE009B11E5 /* CoursesTableViewCell.swift */,
 				74E3C89B1ECD1EF8009B11E5 /* FeedTableViewCell.swift */,
 				74C2BC2A1ECD83CA00C89E98 /* ProfileTableViewCell.swift */,
+				748B1AB51ECE3BAC00D093CF /* SearchCourseTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 				747331BC1ECBBB8100F6D319 /* SignUpVC.swift */,
 				74E3C8971ECD1104009B11E5 /* PostVC.swift */,
 				740F49B01ECD905A0049EEAB /* NoteDescriptionVC.swift */,
+				748B1AB31ECE3ABE00D093CF /* SearchCourseVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -302,6 +308,8 @@
 				7482EA3E1ECBCB2800FABFAA /* DataServices.swift in Sources */,
 				74E3C8941ECC8FE3009B11E5 /* AppMaster.swift in Sources */,
 				74E3C8981ECD1104009B11E5 /* PostVC.swift in Sources */,
+				748B1AB61ECE3BAC00D093CF /* SearchCourseTableViewCell.swift in Sources */,
+				748B1AB41ECE3ABE00D093CF /* SearchCourseVC.swift in Sources */,
 				747331BF1ECBBB8100F6D319 /* ProfileVC.swift in Sources */,
 				747331C91ECBBBBF00F6D319 /* TextFieldView.swift in Sources */,
 				74E3C89A1ECD1C08009B11E5 /* Course.swift in Sources */,

@@ -14,7 +14,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userFullName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
-    var history : [String] = []
+    var subNotes: [Note] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,13 +35,7 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         userImage.layer.cornerRadius = userImage.frame.size.width / 2
         userImage.clipsToBounds = true
         
-        getHistory()
-    }
-    
-    func getHistory() {
-        for note in AppMaster.notes {
-            history.append("Sent post for \(note.courseCode ?? "AA000")");
-        }
+        extractSubNotes()
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,7 +45,25 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     private func findSuperUser() {
         for user in AppMaster.users {
             if AppMaster.sudo?.email == user.email {
-                AppMaster.sudo = user;
+                AppMaster.sudo = user
+            }
+        }
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
+        extractSubNotes()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func extractSubNotes() {
+        subNotes = [];
+        
+        for note in AppMaster.notes {
+            if note.sender == AppMaster.sudo?.name {
+                subNotes.append(note)
             }
         }
     }
@@ -61,15 +73,16 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return history.count
+        return subNotes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewIdentifier", for: indexPath) as! ProfileTableViewCell
-        let hist = history.reversed()[indexPath.row]
+        let note = subNotes.reversed()[indexPath.row]
         
         DispatchQueue.main.async {
-            cell.label.text = "\(hist ?? "null")"
+            cell.courseIdentifier.text = "Post for \(note.courseCode ?? "AA000")"
+            cell.noteImage.image = note.image
         }
         
         return cell
@@ -77,5 +90,15 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ProfileFeedDescSeg" {
+            let selectedCell = sender as! ProfileTableViewCell
+            let indexPath = self.tableView.indexPath(for: selectedCell)
+            let controller = segue.destination as! NoteDescriptionVC
+            
+            controller.note = subNotes[subNotes.count - 1 - indexPath!.row]
+        }
     }
 }
