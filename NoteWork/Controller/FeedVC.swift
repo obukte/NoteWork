@@ -51,7 +51,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         DispatchQueue.main.async {
             if AppMaster.sudo?.name == note.sender {
-                cell.userIdentifier.textColor = UIColor.cyan
+                cell.userIdentifier.textColor = UIColor.red
                 cell.userIdentifier.text = "\(note.sender ?? "Default User") (me)"
             } else {
                 cell.userIdentifier.text = "\(note.sender ?? "Default User")"
