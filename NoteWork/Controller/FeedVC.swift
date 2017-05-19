@@ -54,6 +54,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 cell.userIdentifier.textColor = UIColor.red
                 cell.userIdentifier.text = "\(note.sender ?? "Default User") (me)"
             } else {
+                cell.userIdentifier.textColor = UIColor.black
                 cell.userIdentifier.text = "\(note.sender ?? "Default User")"
             }
             
